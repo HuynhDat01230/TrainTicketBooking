@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TrainProject.Models.TaiKhoan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ThemTaiKhoan", "", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaTK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailTK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quyen.MoTaQuyen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.MaTK)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.TenTK)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.EmailTK)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Quyen.MoTaQuyen)
+            </th>
+            <th></th>
+            @if (item.MaQuyen == 1)
+            {
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.MaTK })
+
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaTK }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaTK }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaTK })
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

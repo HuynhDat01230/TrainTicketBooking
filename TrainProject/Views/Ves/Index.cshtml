@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TrainProject.Models.Ve>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (Session["username"] != "" && Session["username"] != null && Session["userType"].ToString().CompareTo("2") == 0)
+    {
+        <a> @Html.ActionLink("Tạo vé mới", "Create", "Ves", new { area = "" }, new { @class = "nav-link", style = "color: #005361" })</a>
+
+    }
+    else
+    {
+        <a> @Html.ActionLink("Mua vé", "BookingTicket", "ThanhToans", new { area = "" }, new { @class = "nav-link", style = "color: #005361" })</a>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chuyen.TenChuyen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiVe.MoTaLoaiVe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr><td>
+            @Html.DisplayFor(modelItem => item.MaVe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaVe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chuyen.TenChuyen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiVe.MoTaLoaiVe)
+        </td>
+
+        @if (Session["username"] != "" && Session["username"] != null && Session["userType"].ToString().CompareTo("2") == 0)
+        {
+         <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaVe }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaVe }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaVe })
+        </td>
+}
+
+    </tr>
+}
+
+</table>

@@ -1,0 +1,21 @@
+﻿@model TrainProject.Models.Quyen
+
+@{
+    ViewBag.Title = "XoaQuyen";
+}
+
+<h2>XoaQuyen</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="form-horizontal">
+    <h4>Xóa Quyền</h4>
+
+    <form class="form-group" action="/UserTypes/XoaQuyen" method="post">
+        @Html.LabelFor(model => model.MaQuyen, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="number" name="MaQuyen" />
+        </div>
+        <input type="submit" value="Delete" class="btn btn-default" style="margin:10px 10px; border:solid 1px"/> 
+
+    </form>
+</div>

@@ -1,0 +1,35 @@
+﻿@model TrainProject.Models.Tau
+
+@{
+    ViewBag.Title = "ThemTau";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thêm Tàu</h4>
+        <hr />
+        <form class="form-group" action="/Taus/Index" method="post">
+            <div class="col-md-10" >
+                Tên tàu:
+                <input type="text" name="TenTau" />
+            </div>
+            <div class="col-md-10" style="margin-top:20px">
+                Số toa:
+                <input type="number" name="SoToa" style="margin-left:5px"/>
+            </div>
+        </form>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" style="border:solid 1px" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

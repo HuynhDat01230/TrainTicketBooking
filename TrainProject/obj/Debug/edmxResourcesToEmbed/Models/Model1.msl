@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="qltrainModelStoreContainer" CdmEntityContainer="qltrainEntities">
+    <EntitySetMapping Name="Chuyens">
+      <EntityTypeMapping TypeName="qltrainModel.Chuyen">
+        <MappingFragment StoreEntitySet="Chuyen">
+          <ScalarProperty Name="MaChuyen" ColumnName="MaChuyen" />
+          <ScalarProperty Name="MaTau" ColumnName="MaTau" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+          <ScalarProperty Name="TenChuyen" ColumnName="TenChuyen" />
+          <ScalarProperty Name="NoiDi" ColumnName="NoiDi" />
+          <ScalarProperty Name="NoiDen" ColumnName="NoiDen" />
+          <ScalarProperty Name="TGKhoiHanh" ColumnName="TGKhoiHanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HanhKhaches">
+      <EntityTypeMapping TypeName="qltrainModel.HanhKhach">
+        <MappingFragment StoreEntitySet="HanhKhach">
+          <ScalarProperty Name="MaHK" ColumnName="MaHK" />
+          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+          <ScalarProperty Name="TenHK" ColumnName="TenHK" />
+          <ScalarProperty Name="DiaChiHK" ColumnName="DiaChiHK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiVes">
+      <EntityTypeMapping TypeName="qltrainModel.LoaiVe">
+        <MappingFragment StoreEntitySet="LoaiVe">
+          <ScalarProperty Name="MaLoaiVe" ColumnName="MaLoaiVe" />
+          <ScalarProperty Name="MoTaLoaiVe" ColumnName="MoTaLoaiVe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quyens">
+      <EntityTypeMapping TypeName="qltrainModel.Quyen">
+        <MappingFragment StoreEntitySet="Quyen">
+          <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+          <ScalarProperty Name="MoTaQuyen" ColumnName="MoTaQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoans">
+      <EntityTypeMapping TypeName="qltrainModel.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+          <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+          <ScalarProperty Name="TenTK" ColumnName="TenTK" />
+          <ScalarProperty Name="EmailTK" ColumnName="EmailTK" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="XacNhanMatKhau" ColumnName="XacNhanMatKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taus">
+      <EntityTypeMapping TypeName="qltrainModel.Tau">
+        <MappingFragment StoreEntitySet="Tau">
+          <ScalarProperty Name="MaTau" ColumnName="MaTau" />
+          <ScalarProperty Name="TenTau" ColumnName="TenTau" />
+          <ScalarProperty Name="SoToa" ColumnName="SoToa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhToans">
+      <EntityTypeMapping TypeName="qltrainModel.ThanhToan">
+        <MappingFragment StoreEntitySet="ThanhToan">
+          <ScalarProperty Name="MaThanhToan" ColumnName="MaThanhToan" />
+          <ScalarProperty Name="MaVe" ColumnName="MaVe" />
+          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+          <ScalarProperty Name="ThoiGianThanhToan" ColumnName="ThoiGianThanhToan" />
+          <ScalarProperty Name="MoTaThanhToan" ColumnName="MoTaThanhToan" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Toas">
+      <EntityTypeMapping TypeName="qltrainModel.Toa">
+        <MappingFragment StoreEntitySet="Toa">
+          <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+          <ScalarProperty Name="MaTau" ColumnName="MaTau" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+          <ScalarProperty Name="LoaiGhe" ColumnName="LoaiGhe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ves">
+      <EntityTypeMapping TypeName="qltrainModel.Ve">
+        <MappingFragment StoreEntitySet="Ve">
+          <ScalarProperty Name="MaVe" ColumnName="MaVe" />
+          <ScalarProperty Name="MaChuyen" ColumnName="MaChuyen" />
+          <ScalarProperty Name="MaLoaiVe" ColumnName="MaLoaiVe" />
+          <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_BookingTicket" FunctionName="qltrainModel.Store.sp_BookingTicket" />
+    <FunctionImportMapping FunctionImportName="sp_Login" FunctionName="qltrainModel.Store.sp_Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="qltrainModel.sp_Login_Result">
+          <ScalarProperty Name="TenTK" ColumnName="TenTK" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_register" FunctionName="qltrainModel.Store.sp_register" />
+    <FunctionImportMapping FunctionImportName="sp_TimKiemVe" FunctionName="qltrainModel.Store.sp_TimKiemVe">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="qltrainModel.sp_TimKiemVe_Result">
+          <ScalarProperty Name="MaVe" ColumnName="MaVe" />
+          <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+          <ScalarProperty Name="MaLoaiVe" ColumnName="MaLoaiVe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThemChuyen" FunctionName="qltrainModel.Store.sp_ThemChuyen" />
+    <FunctionImportMapping FunctionImportName="sp_ThemHanhKhach" FunctionName="qltrainModel.Store.sp_ThemHanhKhach" />
+    <FunctionImportMapping FunctionImportName="sp_ThemLoaiVe" FunctionName="qltrainModel.Store.sp_ThemLoaiVe" />
+    <FunctionImportMapping FunctionImportName="sp_ThemQuyen" FunctionName="qltrainModel.Store.sp_ThemQuyen" />
+    <FunctionImportMapping FunctionImportName="sp_ThemTau" FunctionName="qltrainModel.Store.sp_ThemTau" />
+    <FunctionImportMapping FunctionImportName="sp_ThemToa" FunctionName="qltrainModel.Store.sp_ThemToa" />
+    <FunctionImportMapping FunctionImportName="sp_ThemVe" FunctionName="qltrainModel.Store.sp_ThemVe" />
+    <FunctionImportMapping FunctionImportName="sp_ThongtinChuyen" FunctionName="qltrainModel.Store.sp_ThongtinChuyen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="qltrainModel.sp_ThongtinChuyen_Result">
+          <ScalarProperty Name="Mã_tài_khoản" ColumnName="Mã tài khoản" />
+          <ScalarProperty Name="Tên" ColumnName="Tên" />
+          <ScalarProperty Name="Địa_chỉ" ColumnName="Địa chỉ" />
+          <ScalarProperty Name="Mã_chuyến" ColumnName="Mã chuyến" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongtinTau" FunctionName="qltrainModel.Store.sp_ThongtinTau" />
+    <FunctionImportMapping FunctionImportName="sp_XoaChuyen" FunctionName="qltrainModel.Store.sp_XoaChuyen" />
+    <FunctionImportMapping FunctionImportName="sp_XoaLoaiVe" FunctionName="qltrainModel.Store.sp_XoaLoaiVe" />
+    <FunctionImportMapping FunctionImportName="sp_XoaQuyen" FunctionName="qltrainModel.Store.sp_XoaQuyen" />
+    <FunctionImportMapping FunctionImportName="sp_XoaTau" FunctionName="qltrainModel.Store.sp_XoaTau" />
+    <FunctionImportMapping FunctionImportName="sp_XoaToa" FunctionName="qltrainModel.Store.sp_XoaToa" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,33 @@
+﻿@model TrainProject.Models.Toa
+
+@{
+    ViewBag.Title = "ThemToa";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thêm Toa</h4>
+        <hr />
+        <form class="form-group" action="/Toas/Index" method="post" style="display:flex">
+          
+            <div style="margin-top:10px" class="col-md-10">Mã toa:
+                <input type="text" name="MaTau" style="margin-left:10px"/>
+            </div>
+            <div style="margin-top:10px" class="col-md-10">Số ghế:
+                <input type="number" name="SoGhe" Style="margin-left:11px"/>
+            </div>
+            <div style="margin-top:10px" class="col-md-10">Loại ghế:
+                <input type="text" name="LoaiGhe" Style="margin-left:2px"/>
+            </div>
+        </form>
+
+        <div class="form-group" style=" margin-right: 250px">
+            <div style="margin-top:10px;" class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

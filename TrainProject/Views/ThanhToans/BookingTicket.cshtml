@@ -1,0 +1,42 @@
+﻿@model TrainProject.Models.ThanhToan
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal" style="display: flex; flex-direction: column;">
+    <h4>Mua vé</h4>
+    <hr />
+    <form action="/ThanhToans/BookingTicKet" method="post" style="margin-top:10px">
+        <div>
+            Số ghế muốn đặt:
+            <input type="number" name="SoGheDat" style="margin-left: 1px; margin-top: 10px" />
+        </div>
+        <div>
+            Mã vé:
+            <input type="number" name="MaVe" style="margin-left: 65px; margin-top: 15px" />
+        </div>
+        <div>
+            Mô tả thanh toán:
+            <input type="text" name="MoTaThanhToan" style="margin-top:15px" />
+        </div>
+
+    </form>
+    @if (Session["username"] == "" || Session["username"] == null)
+    {
+        <a class="btn btn-primary" href="/Login/Index" style="width: 50px; font-size: 15px; margin-left:208px; margin-top:20px"> Login </a>
+    }
+    else
+    {
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Mua" class="btn btn-default" style="margin-top:15px; border:solid 1px" />
+        </div>
+    </div>
+    }
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

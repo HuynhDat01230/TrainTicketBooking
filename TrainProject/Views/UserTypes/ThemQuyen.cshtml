@@ -1,0 +1,33 @@
+﻿@model TrainProject.Models.Quyen
+
+@{
+    ViewBag.Title = "ThemQuyen";
+}
+
+<h2>ThemQuyen</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Quyen</h4>
+    <hr />
+        <form class="form-group" action="/UserTypes/Index" method="post">
+            @Html.LabelFor(model => model.MoTaQuyen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="MoTaQuyen" />
+            </div>
+        </form>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

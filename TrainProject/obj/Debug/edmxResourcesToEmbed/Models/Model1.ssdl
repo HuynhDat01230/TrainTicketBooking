@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="qltrainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Chuyen">
+    <Key>
+      <PropertyRef Name="MaChuyen" />
+    </Key>
+    <Property Name="MaChuyen" Type="int" Nullable="false" />
+    <Property Name="MaTau" Type="int" Nullable="false" />
+    <Property Name="SoGhe" Type="int" Nullable="false" />
+    <Property Name="TenChuyen" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="NoiDi" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="NoiDen" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="TGKhoiHanh" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HanhKhach">
+    <Key>
+      <PropertyRef Name="MaHK" />
+    </Key>
+    <Property Name="MaHK" Type="int" Nullable="false" />
+    <Property Name="MaTK" Type="int" Nullable="false" />
+    <Property Name="TenHK" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DiaChiHK" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiVe">
+    <Key>
+      <PropertyRef Name="MaLoaiVe" />
+    </Key>
+    <Property Name="MaLoaiVe" Type="int" Nullable="false" />
+    <Property Name="MoTaLoaiVe" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quyen">
+    <Key>
+      <PropertyRef Name="MaQuyen" />
+    </Key>
+    <Property Name="MaQuyen" Type="int" Nullable="false" />
+    <Property Name="MoTaQuyen" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="MaTK" />
+    </Key>
+    <Property Name="MaTK" Type="int" Nullable="false" />
+    <Property Name="MaQuyen" Type="int" Nullable="false" />
+    <Property Name="TenTK" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="EmailTK" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SoDienThoai" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="XacNhanMatKhau" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tau">
+    <Key>
+      <PropertyRef Name="MaTau" />
+    </Key>
+    <Property Name="MaTau" Type="int" Nullable="false" />
+    <Property Name="TenTau" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SoToa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThanhToan">
+    <Key>
+      <PropertyRef Name="MaThanhToan" />
+    </Key>
+    <Property Name="MaThanhToan" Type="int" Nullable="false" />
+    <Property Name="MaVe" Type="int" Nullable="false" />
+    <Property Name="MaTK" Type="int" Nullable="false" />
+    <Property Name="ThoiGianThanhToan" Type="datetime" Nullable="false" />
+    <Property Name="MoTaThanhToan" Type="nvarchar" MaxLength="150" />
+    <Property Name="TongTien" Type="money" />
+  </EntityType>
+  <EntityType Name="Toa">
+    <Key>
+      <PropertyRef Name="MaToa" />
+    </Key>
+    <Property Name="MaToa" Type="int" Nullable="false" />
+    <Property Name="MaTau" Type="int" Nullable="false" />
+    <Property Name="SoGhe" Type="int" Nullable="false" />
+    <Property Name="LoaiGhe" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ve">
+    <Key>
+      <PropertyRef Name="MaVe" />
+    </Key>
+    <Property Name="MaVe" Type="int" Nullable="false" />
+    <Property Name="MaChuyen" Type="int" Nullable="false" />
+    <Property Name="MaLoaiVe" Type="int" Nullable="false" />
+    <Property Name="GiaVe" Type="money" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Chuyen__MaTau__2E1BDC42">
+    <End Role="Tau" Type="Self.Tau" Multiplicity="1" />
+    <End Role="Chuyen" Type="Self.Chuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tau">
+        <PropertyRef Name="MaTau" />
+      </Principal>
+      <Dependent Role="Chuyen">
+        <PropertyRef Name="MaTau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HanhKhach__MaTK__29572725">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="HanhKhach" Type="Self.HanhKhach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTK" />
+      </Principal>
+      <Dependent Role="HanhKhach">
+        <PropertyRef Name="MaTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__MaQuye__267ABA7A">
+    <End Role="Quyen" Type="Self.Quyen" Multiplicity="1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quyen">
+        <PropertyRef Name="MaQuyen" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThanhToan__MaTK__37A5467C">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTK" />
+      </Principal>
+      <Dependent Role="ThanhToan">
+        <PropertyRef Name="MaTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThanhToan__MaVe__36B12243">
+    <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+    <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ve">
+        <PropertyRef Name="MaVe" />
+      </Principal>
+      <Dependent Role="ThanhToan">
+        <PropertyRef Name="MaVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Toa__MaTau__3A81B327">
+    <End Role="Tau" Type="Self.Tau" Multiplicity="1" />
+    <End Role="Toa" Type="Self.Toa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tau">
+        <PropertyRef Name="MaTau" />
+      </Principal>
+      <Dependent Role="Toa">
+        <PropertyRef Name="MaTau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ve__MaChuyen__32E0915F">
+    <End Role="Chuyen" Type="Self.Chuyen" Multiplicity="1" />
+    <End Role="Ve" Type="Self.Ve" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chuyen">
+        <PropertyRef Name="MaChuyen" />
+      </Principal>
+      <Dependent Role="Ve">
+        <PropertyRef Name="MaChuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ve__MaLoaiVe__33D4B598">
+    <End Role="LoaiVe" Type="Self.LoaiVe" Multiplicity="1" />
+    <End Role="Ve" Type="Self.Ve" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiVe">
+        <PropertyRef Name="MaLoaiVe" />
+      </Principal>
+      <Dependent Role="Ve">
+        <PropertyRef Name="MaLoaiVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_BookingTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SoGheDat" Type="int" Mode="In" />
+    <Parameter Name="mave" Type="int" Mode="In" />
+    <Parameter Name="mataikhoan" Type="int" Mode="In" />
+    <Parameter Name="motathanhtoan" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uname" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_register" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uname" Type="nvarchar" Mode="In" />
+    <Parameter Name="emailtaikhoan" Type="nvarchar" Mode="In" />
+    <Parameter Name="sodienthoai" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhanpass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_TimKiemVe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="gadi" Type="nvarchar" Mode="In" />
+    <Parameter Name="gaden" Type="nvarchar" Mode="In" />
+    <Parameter Name="thoigiandi" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemChuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matau" Type="int" Mode="In" />
+    <Parameter Name="tenchuyen" Type="nvarchar" Mode="In" />
+    <Parameter Name="gadi" Type="nvarchar" Mode="In" />
+    <Parameter Name="gaden" Type="nvarchar" Mode="In" />
+    <Parameter Name="thoigiandi" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemHanhKhach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mataikhoan" Type="int" Mode="In" />
+    <Parameter Name="tenhk" Type="nvarchar" Mode="In" />
+    <Parameter Name="diachihk" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemLoaiVe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="motaloaive" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="motaquyen" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemTau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tentau" Type="nvarchar" Mode="In" />
+    <Parameter Name="sotoa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemToa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matau" Type="int" Mode="In" />
+    <Parameter Name="soghe" Type="int" Mode="In" />
+    <Parameter Name="loaighe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemVe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="machuyen" Type="int" Mode="In" />
+    <Parameter Name="maloaive" Type="int" Mode="In" />
+    <Parameter Name="giave" Type="money" Mode="In" />
+  </Function>
+  <Function Name="sp_ThongtinChuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="machuyen" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ThongtinTau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matau" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaChuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="machuyen" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaLoaiVe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maloaive" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maquyen" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaTau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matau" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaToa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matoa" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="qltrainModelStoreContainer">
+    <EntitySet Name="Chuyen" EntityType="Self.Chuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HanhKhach" EntityType="Self.HanhKhach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiVe" EntityType="Self.LoaiVe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tau" EntityType="Self.Tau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThanhToan" EntityType="Self.ThanhToan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Toa" EntityType="Self.Toa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ve" EntityType="Self.Ve" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Chuyen__MaTau__2E1BDC42" Association="Self.FK__Chuyen__MaTau__2E1BDC42">
+      <End Role="Tau" EntitySet="Tau" />
+      <End Role="Chuyen" EntitySet="Chuyen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HanhKhach__MaTK__29572725" Association="Self.FK__HanhKhach__MaTK__29572725">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="HanhKhach" EntitySet="HanhKhach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__MaQuye__267ABA7A" Association="Self.FK__TaiKhoan__MaQuye__267ABA7A">
+      <End Role="Quyen" EntitySet="Quyen" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThanhToan__MaTK__37A5467C" Association="Self.FK__ThanhToan__MaTK__37A5467C">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="ThanhToan" EntitySet="ThanhToan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThanhToan__MaVe__36B12243" Association="Self.FK__ThanhToan__MaVe__36B12243">
+      <End Role="Ve" EntitySet="Ve" />
+      <End Role="ThanhToan" EntitySet="ThanhToan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Toa__MaTau__3A81B327" Association="Self.FK__Toa__MaTau__3A81B327">
+      <End Role="Tau" EntitySet="Tau" />
+      <End Role="Toa" EntitySet="Toa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ve__MaChuyen__32E0915F" Association="Self.FK__Ve__MaChuyen__32E0915F">
+      <End Role="Chuyen" EntitySet="Chuyen" />
+      <End Role="Ve" EntitySet="Ve" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ve__MaLoaiVe__33D4B598" Association="Self.FK__Ve__MaLoaiVe__33D4B598">
+      <End Role="LoaiVe" EntitySet="LoaiVe" />
+      <End Role="Ve" EntitySet="Ve" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,79 @@
+﻿@model TrainProject.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <div style="transform:scale(1.25);padding-left:10%;padding-top:3%">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailTK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailTK)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quyen.MoTaQuyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quyen.MoTaQuyen)
+        </dd>
+
+    </div>
+</div>
+@if (Model.MaQuyen == 1)
+{
+    <p style="padding-top:5%">
+
+        @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-outline-secondary" })
+    </p>
+}
+else
+{
+    <p style="padding-top:5%">
+        <div style="display:flex">
+            <div class="btn btn-outline-info">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MaTK, @style = "text-decoration:none" })
+            </div>
+            <div style="margin-left:10px;transform:scale(2);margin-top:5px">
+                |
+            </div>
+            <div style="margin-left:10px">
+                @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-outline-secondary" })
+            </div>
+        </div>
+
+    </p>
+}
+

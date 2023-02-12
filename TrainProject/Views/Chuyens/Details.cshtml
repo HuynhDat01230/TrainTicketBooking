@@ -1,0 +1,66 @@
+﻿@model TrainProject.Models.Chuyen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Chuyen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoGhe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoGhe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenChuyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChuyen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TGKhoiHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TGKhoiHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tau.TenTau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tau.TenTau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaChuyen }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

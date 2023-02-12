@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TrainProject.Models.Chuyen>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Index</h2>
+
+<p>
+    @if (Session["username"] != "" && Session["username"] != null && Session["userType"].ToString().CompareTo("1") == 0)
+    {
+        @Html.ActionLink("Create New", "ThemChuyen")
+    }
+</p>
+<table class="table">
+    <tr><th>
+            @Html.DisplayNameFor(model => model.MaChuyen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoGhe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenChuyen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TGKhoiHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tau.TenTau)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaChuyen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoGhe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChuyen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TGKhoiHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tau.TenTau)
+            </td>
+            @if (Session["username"] != "" && Session["username"] != null && Session["userType"].ToString().CompareTo("1") == 0)
+            {
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaChuyen }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaChuyen }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaChuyen })
+                </td>
+            }
+        </tr>
+    }
+
+
+</table>
+

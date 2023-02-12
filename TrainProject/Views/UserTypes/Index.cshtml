@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TrainProject.Models.Quyen >
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Type</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ThemQuyen")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTaQuyen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTaQuyen)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaQuyen }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaQuyen }) |
+                @Html.ActionLink("Delete", "XoaQuyen", new { id = item.MaQuyen })
+            </td>
+        </tr>
+    }
+
+</table>
